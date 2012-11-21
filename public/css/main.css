@@ -1,0 +1,31 @@
+body{
+  background-color:black;
+}
+
+#company-logo{
+  opacity:0.5;
+  position:absolute; 
+  left:10px;
+  bottom:-20px;
+  font-size:120%;
+  color:white;
+  z-index:10000;
+}
+
+#vimeo-player{
+  position:absolute;
+  top:-5%;
+  left:-5%;
+  z-index:-1000;
+  width:120%;
+  height:120%;
+  -webkit-filter:blur(30px) hue-rotate(0deg);
+}
+
+#content{
+  z-index:1000;
+  background-color: rgba(255,255,255,0.4);
+  position:absolute;
+  display:none;
+  border-radius:300px;
+}

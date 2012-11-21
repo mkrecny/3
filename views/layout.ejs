@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>3gthr</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/main.css" rel="stylesheet" media="screen">
+  </head>
+  <body style="overflow:hidden">
+
+    
+
+    <!--50061391-->
+    <iframe id="vimeo-player" src="http://player.vimeo.com/video/50061391?api=1" 
+      loop="1" 
+      byline="0" 
+      title="0" 
+      frameborder="0">
+    </iframe>
+    <audio autoplay="autoplay" loop="loop">
+      <source src="/audio/shape.mp3" type="audio/mp3">
+    </audio>
+    <div id="content"></div>
+    <p id="company-logo" class="lead">
+        &copy; 3NESS SYSTEMS 2023
+    </p>
+    <!-- JS ASSETS -->
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/init_video_player.js"></script>
+    <script src="/js/insert_content.js"></script>
+    <script src="/js/next_step.js"></script>
+    <!-- TEMPLATES -->
+    <%- partial('0') %>
+    <%- partial('1') %>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        if (navigator.userAgent.indexOf('Chrome')==-1){
+          document.location = 'https://www.google.com/intl/en/chrome/browser/';
+        }
+        initVideoPlayer(function(){
+          window.currentContent = 0;
+          insertCurrentContent();
+        });
+      });
+    </script>
+
+  </body>
+
+</html>

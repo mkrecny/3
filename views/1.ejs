@@ -1,0 +1,31 @@
+<script id="c1" type="text/template">
+  <div>
+    <img class="img-1" src="/img/1.jpg" />
+  </div>
+  <style>
+  </style>
+  <style>
+    .img-1{
+      width:75%;
+      border-radius:200px;
+      border:1px solid #999999;
+      -webkit-filter:contrast(170%) grayscale(80%);
+    }
+  </style>
+</script>
+<script type="text/javascript">
+  (function(){
+    var called = false;
+    window.initContent1 = function(){
+      if (called) return false;
+      called = true;
+      console.log('initcontent1 called');
+      $('#content').append('<audio autoplay="autoplay"><source src="/audio/1.ogg" type="audio/ogg"> </audio>');
+      var gs = 100;
+      setInterval(function(){
+        gs-=1;
+        $('.img-1').css({"-webkit-filter":'contrast(170%) grayscale('+gs+'%)'});
+      }, 100);
+    }
+  })();
+</script>

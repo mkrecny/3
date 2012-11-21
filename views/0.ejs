@@ -1,0 +1,44 @@
+<script id="c0" type="text/template">
+  <div>
+    <p class="title text lead">Customer Testimonial</p>
+    <hr>
+    <p>
+    <img class="testimonial-img" src="/img/myles.jpg" />
+    </p>
+    <p class="subtitle lead text">Myles Recny, 25, United Kingdom</p>
+  </div>
+  <style>
+    .text{
+      color:white;
+    }
+    .title{
+      font-size:200%;
+    }
+    .subtitle{
+      font-size:160%;
+    }
+    .testimonial-img{
+      width:50%;
+      border-radius:10px;
+      -webkit-filter:contrast(110%);
+      border:1px solid #999999;
+    }
+    .testimonial-img:hover{
+      -webkit-filter:blur(1px) contrast(120%);
+      cursor:pointer;
+    }
+  </style>
+</script>
+<script type="text/javascript">
+  (function(){
+    window.initContent0 = function(){
+      var clicked = 0;
+      $('.testimonial-img').click(function(){
+        if (!clicked){
+          clicked=1;
+          window.nextStep();
+        }
+      });
+    }
+  })();
+</script>
