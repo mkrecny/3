@@ -9,7 +9,7 @@
       width:75%;
       border-radius:200px;
       border:1px solid #999999;
-      -webkit-filter:contrast(170%) grayscale(80%);
+      -webkit-filter:contrast(170%) grayscale(100%);
     }
   </style>
 </script>
@@ -20,12 +20,20 @@
       if (called) return false;
       called = true;
       console.log('initcontent1 called');
-      $('#content').append('<audio autoplay="autoplay"><source src="/audio/1.ogg" type="audio/ogg"> </audio>');
-      var gs = 100;
+
+      $('#content').append('<audio id="audio_1"><source src="/audio/1.ogg" type="audio/ogg"> </audio>');
+      document.getElementById('audio_1').play();
+      document.getElementById('audio_1').addEventListener('ended', function(){
+        setTimeout(function(){
+          window.nextStep();
+        }, 400);
+      }, false);
+
+      /*var gs = 100;
       setInterval(function(){
         gs-=1;
         $('.img-1').css({"-webkit-filter":'contrast(170%) grayscale('+gs+'%)'});
-      }, 100);
+      }, 100);*/
     }
   })();
 </script>

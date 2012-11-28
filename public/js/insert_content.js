@@ -20,14 +20,25 @@
 
   window.insertCurrentContent = function(){
     var template_id = 'c'+window.currentContent;
-    $('#content').html('');
-    var el = $($('#'+template_id).html());
+    $('#content').children().each(function(){
+      $(this).fadeOut();
+    });
+    setTimeout(function(){
+      var el = $($('#'+template_id).html());
+      centerElement(el);
+      $('#content').append(el);
+      $(el).fadeIn(2000);
+      setTimeout(function(){
+        window['initContent'+window.currentContent]();
+      }, 1000);
+    }, 200);
+    /*var el = $($('#'+template_id).html());
     centerElement(el);
     $('#content').append(el);
     $(el).fadeIn(2000);
     setTimeout(function(){
       window['initContent'+window.currentContent]();
-    }, 1000);
+    }, 1000);*/
   }
 
 })();

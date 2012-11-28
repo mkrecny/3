@@ -1,0 +1,40 @@
+<script id="c2" type="text/template">
+  <div>
+    <p>
+    <img class="img-2" src="/img/2.jpg" />
+    </p>
+  </div>
+  <style>
+    .text{
+      color:white;
+    }
+    .title{
+      font-size:200%;
+    }
+    .subtitle{
+      font-size:160%;
+    }
+    .img-2{
+      margin-top:-9%;
+      border-radius:100px;
+      border:1px solid #999999;
+    }
+  </style>
+</script>
+<script type="text/javascript">
+  var called = false;
+  (function(){
+    window.initContent2 = function(){
+      if (called) return false;
+      var clicked = 0;
+      $('#content').append('<audio id="audio_2"><source src="/audio/2.ogg" type="audio/ogg"> </audio>');
+      document.getElementById('audio_2').play();
+      $('.img-2').click(function(){
+        if (!clicked){
+          clicked=1;
+          window.nextStep();
+        }
+      });
+    }
+  })();
+</script>
