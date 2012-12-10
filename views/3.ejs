@@ -1,7 +1,7 @@
-<script id="c2" type="text/template">
+<script id="c3" type="text/template">
   <div>
     <p>
-    <img class="img-2 c-img" src="/img/2.jpg" />
+    <img class="img-3 c-img" src="/img/3.jpg" />
     </p>
   </div>
   <style>
@@ -14,8 +14,8 @@
     .subtitle{
       font-size:160%;
     }
-    .img-2{
-      margin-top:10%;
+    .img-3{
+      margin-top:13%;
       border-radius:300px;
     }
   </style>
@@ -23,17 +23,18 @@
 <script type="text/javascript">
   var called = false;
   (function(){
-    window.initContent2 = function(){
+    window.initContent3 = function(){
       if (called) return false;
       var clicked = 0;
-      $('#content').append('<audio id="audio_2"><source src="/audio/2.ogg" type="audio/ogg"> </audio>');
-      document.getElementById('audio_2').play();
-      document.getElementById('audio_2').addEventListener('ended', function(){
+      $('#content').append('<audio id="audio_3"><source src="/audio/3.ogg" type="audio/ogg"> </audio>');
+      document.getElementById('audio_3').play();
+      document.getElementById('audio_3').addEventListener('ended', function(){
         console.log('audio ended');
         setTimeout(function(){
           window.nextStep();
         }, 400);
       }, false);
+      
     }
   })();
 </script>

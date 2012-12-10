@@ -1,44 +1,45 @@
 (function(){
 
-  function centerElement(el){
+  function centerElement(el, iw, ih){
+
     var w = $('#content').width()
-      , h = $('#content').height()
-      , smaller = w>h ? h : w
-      , size = smaller*.7
-      , top = (h-size)/2
-      , left = (w-size)/2
-      , css_opts = {
-      "text-align":"center",
+      , h = $('#content').height();
+
+    var css_opts = {
       position:'absolute',
       display:'none',
-      height:size,
-      width:size,
-      top:top,
-      left:left};
+      top:(h-ih)/2,
+      left:(w-iw)/2
+    };
+      
     $(el).css(css_opts);
   }
 
   window.insertCurrentContent = function(){
-    var template_id = 'c'+window.currentContent;
-    $('#content').children().each(function(){
-      $(this).fadeOut();
+    $('#content').children().fadeOut(function(){
+
     });
-    setTimeout(function(){
-      var el = $($('#'+template_id).html());
-      centerElement(el);
-      $('#content').append(el);
-      $(el).fadeIn(2000);
-      setTimeout(function(){
-        window['initContent'+window.currentContent]();
-      }, 1000);
-    }, 200);
-    /*var el = $($('#'+template_id).html());
-    centerElement(el);
-    $('#content').append(el);
-    $(el).fadeIn(2000);
-    setTimeout(function(){
-      window['initContent'+window.currentContent]();
-    }, 1000);*/
+    var cid = window.currentContent;
+    var imgLoad = $('<img class="main-image" />');
+    imgLoad.attr("src", "/img/"+cid+".jpg" + "?" + new Date().getTime());
+    imgLoad.unbind("load");
+    imgLoad.bind("load", function(){
+      $('#status').text(cid);
+      centerElement(imgLoad, this.width, this.height);
+      $('#content').append(imgLoad);
+      $(imgLoad).fadeIn(2000);
+      var aid = 'audio_'+cid;
+      var src = '/audio/'+cid+'.ogg';
+      $('#content').append('<audio id="'+aid+'"><source src="'+src+'" type="audio/ogg"> </audio>');
+      document.getElementById(aid).play();
+      document.getElementById(aid).addEventListener('ended', function(){
+        console.log('audio ended');
+        setTimeout(function(){
+          window.nextStep();
+        }, 400);
+      }, false);
+
+    });
   }
 
 })();
